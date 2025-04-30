@@ -16,7 +16,7 @@ const ProgressSchema = new Schema({
         type:Number,
         required:true,
     },
-    lastPostion:{
+    lastPosition:{
         type:Number,
         default:0,
     }
