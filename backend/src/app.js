@@ -14,4 +14,11 @@ app.use(express.urlencoded({extended:true,limit:'16kb'}))
 app.use(express.static("public"))
 app.use(cookieParser()) 
 
+
+import saveProgressRoutes from "./routes/saving.routes.js"
+import getProgressRoutes from "./routes/tracking.routes.js"
+
+app.use("/api/v1/", saveProgressRoutes)
+app.use("/api/v1/", getProgressRoutes)
+
 export {app}
