@@ -14,7 +14,7 @@ const VideoPlayer = ({ videoId, userId }) => {
   useEffect(() => {
     const fetchProgress = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/v1/${videoId}`);  // currenlty we are not handling on the based on userId since its being done locally for production we can modify with userId via auth
+        const res = await axios.get(`https://td-assignment-2.onrender.com/api/v1/${videoId}`);  // currenlty we are not handling on the based on userId since its being done locally for production we can modify with userId via auth
         //console.log('Fetched progress:', res.data);
         const { lastPosition: backendLast, progressPercent, duration } = res.data;
 
@@ -77,7 +77,7 @@ const VideoPlayer = ({ videoId, userId }) => {
       };
 
       try {
-        const res = await axios.post(`http://localhost:5000/api/v1/save`, payload);
+        const res = await axios.post(`https://td-assignment-2.onrender.com/api/v1/save`, payload);
         //console.log('Saved progress:', res.data);
         setProgress(res.data.progressPercent ?? 0);
         localStorage.setItem(localKey, end);
