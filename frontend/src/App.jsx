@@ -11,7 +11,8 @@ function App() {
     <>
     <div className="min-h-screen bg-black p-4">
       <h1 className="text-2xl text-white font-bold mb-4">Lecture Progress Tracker</h1>
-      <VideoPlayer userId="user123" videoId="12" />
+      {/* sample userId and videoId */}
+      <VideoPlayer userId="user123" videoId="12" /> 
     </div>
     </>
   )

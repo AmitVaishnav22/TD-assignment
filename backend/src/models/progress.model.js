@@ -19,6 +19,10 @@ const ProgressSchema = new Schema({
     lastPosition:{
         type:Number,
         default:0,
+    },
+    progressPercent:{
+        type:Number,
+        default:0,
     }
 
 },{timestamps:true});
