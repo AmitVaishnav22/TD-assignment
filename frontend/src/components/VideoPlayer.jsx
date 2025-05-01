@@ -8,6 +8,7 @@ const VideoPlayer = ({ videoId, userId }) => {
   const [duration, setDuration] = useState(0);
   const [intervals, setIntervals] = useState([]);
   const [currentStart, setCurrentStart] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const localKey = `video-${videoId}-position`;
 
@@ -26,6 +27,9 @@ const VideoPlayer = ({ videoId, userId }) => {
         setDuration(duration ?? 0);
       } catch (err) {
         console.error('Error fetching progress:', err.message);
+      }
+      finally {
+        setLoading(false); 
       }
     };
     fetchProgress();
@@ -92,6 +96,10 @@ const VideoPlayer = ({ videoId, userId }) => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
+      {loading ? (
+        <div className="text-lg text-white font-semibold text-gray-600 animate-pulse">Loading...</div>
+      ) : (
+      <>
       <h1 className="text-2xl font-bold mb-4 text-white">Lecture Video</h1>
       <div className="relative w-full aspect-video mb-4">
         <video
@@ -117,9 +125,12 @@ const VideoPlayer = ({ videoId, userId }) => {
       </div>
       <p className="text-gray-700">Watched: {progress}%</p>
       <h4 className="text-white">Note : Progess bar is updated on every pause/resume or video complete and only unique intervals are being added in the progess% bar. </h4>
-    </div>
+    </>
+    )}
+  </div>
+
   );
-};
+}
 
 export default VideoPlayer;
 
